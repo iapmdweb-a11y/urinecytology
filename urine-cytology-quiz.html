@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urine Cytology Mastery Quiz | International Academy of Pathology (IAPMD)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif-iap {
+            font-family: 'Playfair Display', serif;
+        }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #certificate-modal, #certificate-modal * {
+                visibility: visible;
+            }
+            #certificate-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none !important;
+                background: white !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-950 border-b border-slate-800 py-4 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center font-bold text-slate-950 text-xl shadow-inner font-serif-iap">
+                    IAP
+                </div>
+                <div>
+                    <h1 class="font-serif-iap text-lg font-bold tracking-wide text-amber-400">International Academy of Pathology Malaysian Division</h1>
+                    <p class="text-xs text-slate-400 uppercase tracking-widest">Division &bull; Personal Study Portal (iapmd.net)</p>
+                </div>
+            </div>
+            <div class="text-xs text-slate-400 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-full">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span>
+                Urine Cytology Mastery Assessment
+            </div>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="flex-grow flex items-start sm:items-center justify-center p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full">
+
+        <!-- SCREEN 1: Introduction & Registration -->
+        <div id="screen-welcome" class="w-full bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-6 sm:p-10 shadow-2xl transition-all duration-300">
+            <div class="text-center max-w-2xl mx-auto space-y-4">
+                <div class="inline-flex p-3 bg-amber-500/10 rounded-2xl border border-amber-500/20 text-amber-400 mb-2">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                    </svg>
+                </div>
+                <h2 class="font-serif-iap text-3xl sm:text-4xl font-bold text-white">Advanced Urine Cytology Mastery</h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Test your diagnostic proficiency across 20 high-yield clinical scenarios covering The Paris System (TPS) criteria, high-grade urothelial carcinoma, decoy cells, preparation artifacts, and diagnostic mimics.
+                </p>
+                <div class="bg-slate-900/60 border border-slate-700/50 rounded-xl p-4 text-left text-xs sm:text-sm text-slate-300 space-y-2">
+                    <div class="flex items-center space-x-2 text-amber-400 font-semibold">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Assessment Guidelines:</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-1 text-slate-300 pl-1">
+                        <li><strong>20 Questions</strong> with linked external microscopic images.</li>
+                        <li><strong>30-second countdown timer</strong> per question.</li>
+                        <li>Designed strictly for <strong>personal study & professional self-assessment</strong> (No CME points awarded).</li>
+                        <li>Earn an official <strong>IAPMD Certificate of Completion</strong> upon finishing.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 max-w-md mx-auto space-y-4">
+                <div>
+                    <label for="participant-name" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Enter Full Name for Certificate:</label>
+                    <input type="text" id="participant-name" placeholder="e.g., Dr. Jane Doe, MD" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base">
+                    <p id="name-error" class="text-rose-400 text-xs mt-1.5 hidden">Please enter your name to proceed.</p>
+                </div>
+                <button onclick="startQuiz()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all transform active:scale-95 flex items-center justify-center space-x-2">
+                    <span>Begin Mastery Quiz</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: Quiz Question Interface -->
+        <div id="screen-quiz" class="w-full bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-6 sm:p-8 shadow-2xl hidden">
+            <!-- Quiz Top Bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-700">
+                <div>
+                    <span id="question-counter" class="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Question 1 of 20</span>
+                    <h3 id="category-badge" class="text-xs text-slate-400 mt-2 font-medium">Category: Diagnostic Criteria & The Paris System</h3>
+                </div>
+                <div class="flex items-center space-x-3 w-full sm:w-auto justify-between sm:justify-end">
+                    <div class="text-xs text-slate-400">Time Remaining:</div>
+                    <div id="timer-display" class="font-mono text-lg font-bold text-amber-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-700 w-16 text-center">30s</div>
+                </div>
+            </div>
+
+            <!-- Timer Progress Bar -->
+            <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden mb-6 border border-slate-700/50">
+                <div id="timer-bar" class="bg-amber-500 h-full w-full transition-all duration-1000 linear"></div>
+            </div>
+
+            <!-- Main Question Layout: Split into Question & Image Container -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+                <!-- Question Text -->
+                <div class="md:col-span-7 flex flex-col justify-center">
+                    <h2 id="question-text" class="text-base sm:text-lg font-medium text-white leading-relaxed">
+                        Loading question...
+                    </h2>
+                </div>
+                <!-- External educational image: source attribution remains linked -->
+                <div class="md:col-span-5 bg-slate-900 rounded-xl border border-slate-700 p-3 flex flex-col items-center gap-2">
+                    <a id="question-image-link" href="#" target="_blank" rel="noopener noreferrer" class="block w-full">
+                        <img id="question-image" src="" alt="Urine cytology microscopic image" class="w-full max-h-80 object-contain rounded-lg bg-black" loading="eager">
+                    </a>
+                    <p id="image-caption" class="text-xs text-amber-300 font-medium px-2 text-center">Microscopic field</p>
+                    <p class="text-[10px] text-slate-500 text-center">External educational image. Opens original source in a new tab.</p>
+                    <p id="image-error" class="hidden text-xs text-rose-300 text-center">The source image could not be loaded here. Use “Open original image” to view it at the source.</p>
+                    <a id="image-source-link" href="#" target="_blank" rel="noopener noreferrer" class="text-xs text-sky-300 underline">Open original image</a>
+                </div>
+            </div>
+
+            <!-- Options Grid -->
+            <div id="options-container" class="grid grid-cols-1 gap-3 mb-6">
+                <!-- Dynamically generated options will load here -->
+            </div>
+
+            <!-- Educational note appears after an answer or timeout -->
+            <div id="educational-note" class="hidden mb-6 rounded-xl border border-sky-800/70 bg-sky-950/40 p-4">
+                <h4 class="text-sm font-semibold text-sky-300 mb-1">Educational note / caveat</h4>
+                <p id="educational-note-text" class="text-sm leading-relaxed text-slate-200"></p>
+            </div>
+
+            <!-- Quiz Footer Action (sticky so Next is always reachable) -->
+            <div class="flex justify-between items-center pt-4 border-t border-slate-700 sticky bottom-0 bg-slate-800 py-3">
+                <span id="score-tracker" class="text-xs text-slate-400">Score: 0 / 20</span>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl shadow transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    Next Question
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: Results & Certificate Screen -->
+        <div id="screen-results" class="w-full bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-6 sm:p-10 shadow-2xl hidden text-center space-y-6">
+            <div class="inline-flex p-4 bg-amber-500/10 rounded-full border border-amber-500/20 text-amber-400">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div>
+                <h2 class="font-serif-iap text-3xl font-bold text-white mb-2">Quiz Completed Successfully!</h2>
+                <p class="text-slate-300 text-sm">You have completed the Urine Cytology Mastery Assessment for personal study.</p>
+            </div>
+
+            <!-- Score Card -->
+            <div class="bg-slate-900 border border-slate-700 rounded-xl p-6 max-w-sm mx-auto">
+                <div class="text-slate-400 text-xs uppercase tracking-wider mb-1">Final Score</div>
+                <div id="final-score-display" class="text-4xl font-bold font-serif-iap text-amber-400">18 / 20</div>
+                <div id="final-percentage" class="text-sm text-slate-300 mt-1">90% Accuracy</div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+                <button onclick="openCertificateModal()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold px-6 py-3 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span>View IAP Certificate</span>
+                </button>
+                <button onclick="restartQuiz()" class="bg-slate-700 hover:bg-slate-600 text-white font-medium px-6 py-3 rounded-xl transition">
+                    Retake Quiz
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- CERTIFICATE MODAL / VIEW -->
+    <div id="certificate-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto hidden">
+        <div class="bg-white text-slate-900 rounded-2xl max-w-3xl w-full p-8 sm:p-12 shadow-2xl relative border-8 border-amber-600/20 my-8">
+            <!-- Close Button (No Print) -->
+            <button onclick="closeCertificateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 no-print text-xl font-bold p-2">
+                &times;
+            </button>
+
+            <!-- Certificate Inner Content -->
+            <div class="text-center space-y-4 border-4 border-double border-amber-700/40 p-6 sm:p-8 rounded-xl bg-amber-50/30">
+                <!-- Crest / Header -->
+                <div class="flex justify-center mb-2">
+                    <div class="w-16 h-16 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center text-2xl font-bold font-serif-iap shadow-md border-2 border-amber-500">
+                        IAP
+                    </div>
+                </div>
+                <h4 class="text-xs uppercase tracking-widest text-amber-800 font-semibold">International Academy of Pathology Malaysian Division</h4>
+                <h2 class="font-serif-iap text-2xl sm:text-3xl font-bold text-slate-900 tracking-wide uppercase">Certificate of Completion</h2>
+                <p class="text-xs text-slate-600 italic">This certificate is awarded for personal study and professional self-assessment (No CME points granted).</p>
+
+                <div class="py-4">
+                    <p class="text-xs uppercase tracking-wider text-slate-500 mb-1">Proudly Presented To:</p>
+                    <h3 id="cert-participant-name" class="font-serif-iap text-2xl sm:text-3xl font-bold text-slate-900 border-b-2 border-amber-600/40 pb-1 inline-block min-w-[280px]">Dr. Participant Name</h3>
+                </div>
+
+                <p class="text-sm text-slate-700 max-w-lg mx-auto leading-relaxed">
+                    For successfully completing the rigorous 20-question mastery module in <strong class="text-slate-900">Urine Cytology</strong>, covering advanced cytopathologic criteria, diagnostic reporting categories under The Paris System, and artifact recognition on iapmd.net.
+                </p>
+
+                <!-- Footer Signatures & Date -->
+                <div class="grid grid-cols-2 gap-8 pt-8 mt-6 border-t border-slate-300 text-left">
+                    <div>
+                        <p id="cert-date" class="text-xs font-semibold text-slate-800">Date: October 20, 2026</p>
+                        <p class="text-[10px] text-slate-500 mt-0.5">Personal-study certificate • Not a CME credential</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="font-serif-iap font-bold text-slate-900 text-sm italic">IAPMD Education Board</div>
+                        <p class="text-[10px] text-slate-500 mt-0.5">International Academy of Pathology</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Actions -->
+            <div class="mt-6 flex justify-end space-x-3 no-print">
+                <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-800 text-white font-medium px-5 py-2.5 rounded-xl text-sm transition flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    <span>Print / Save Certificate</span>
+                </button>
+                <button onclick="closeCertificateModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-medium px-5 py-2.5 rounded-xl text-sm transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-4 text-center text-xs text-slate-500 no-print">
+        &copy; 2026 International Academy of Pathology (iapmd.net). All rights reserved. For personal study use only.
+    </footer>
+
+    <!-- JavaScript Quiz Logic -->
+    <script>
+        const quizData = [
+            {
+                category: "The Paris System & HGUC Criteria",
+                question: "Which of the following cellular features is the most critical diagnostic criterion for establishing a diagnosis of High-Grade Urothelial Carcinoma (HGUC) under The Paris System?",
+                options: [
+                    "Nuclear-to-cytoplasmic ratio greater than 0.7, with hyperchromasia and other malignant nuclear features",
+                    "Presence of scattered binucleated umbrella cells with pale cytoplasm",
+                    "Abundant superficial squamous cells with pyknotic nuclei",
+                    "Small uniform cell clusters without nuclear membrane irregularities"
+                ],
+                correct: 0,
+                imageCaption: "HGUC: high N:C ratio and malignant nuclear features",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%206.5.jpg",
+                educationalNote: "TPS uses an N:C ratio >0.7 as the major benchmark for HGUC, together with moderate–severe hyperchromasia, coarse/clumped chromatin and irregular nuclear membranes. Interpret a constellation of findings in well-preserved cells; do not diagnose from N:C ratio alone."
+            },
+            {
+                category: "Specimen Processing & Artifacts",
+                question: "When examining a post-instrumentation urine specimen, which artifactual finding is most frequently encountered and can easily be misdiagnosed as a true papillary neoplasm?",
+                options: [
+                    "Diffuse single red blood cells mixed with neutrophils",
+                    "Cohesive, three-dimensional clusters of benign denuded urothelium with crush artifact",
+                    "Glitter cells exhibiting brownian motion in hypotonic urine",
+                    "Squamous metaplasia sheets with abundant keratinization"
+                ],
+                correct: 1,
+                imageCaption: "Denuded Urothelial Cluster & Crush Artifact",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.1%20b.jpg",
+                educationalNote: "Instrumentation can produce cohesive or three-dimensional benign urothelial groups, sometimes with degeneration or crush artifact. Correlate with recent cystoscopy/catheterisation and assess nuclear detail; architecture alone does not establish papillary neoplasia."
+            },
+            {
+                category: "Viral Inclusions in Urine",
+                question: "Decoy cells observed in urine cytology, which are infected by BK polyomavirus, are most reliably distinguished from high-grade urothelial carcinoma by which nuclear feature?",
+                options: [
+                    "Marked nuclear hyperchromasia with irregular angulated borders",
+                    "A homogeneous, glassy, basophilic inclusion filling the entire enlarged nucleus",
+                    "Multiple prominent macronucleoli arranged peripherally",
+                    "Complete pyknosis with nuclear fragmentation (karyorrhexis)"
+                ],
+                correct: 1,
+                imageCaption: "BK Polyomavirus Decoy Cell",
+                imageUrl: "https://www.pathologyoutlines.com/imgau/kidneybkvirussaglam09.jpg",
+                educationalNote: "BK polyomavirus decoy cells may show enlarged nuclei with smooth, glassy viral inclusions and peripheral chromatin. They can mimic malignancy; clinical context, morphology and, where needed, ancillary testing help. Polyomavirus changes are generally reported as negative for HGUC under TPS when characteristic."
+            },
+            {
+                category: "Specimen Adequacy",
+                question: "According to The Paris System, which statement best describes adequacy assessment for a non-instrumented voided urine specimen?",
+                options: [
+                    "A universal minimum of 500 urothelial cells is required",
+                    "A universal minimum of 1,000 urothelial cells is required",
+                    "Adequate volume (commonly >30 mL) and appropriate handling are important; there is no universal 2,000-cell threshold for voided urine",
+                    "A universal minimum of 5,000 urothelial cells is required"
+                ],
+                correct: 2,
+                imageCaption: "Urothelial Cell Cellularity Assessment",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.1%20a.jpg",
+                educationalNote: "For voided urine, adequacy is not defined by a universal minimum of 2,000 urothelial cells. TPS guidance emphasizes sufficient volume (commonly >30 mL) and appropriate handling; instrumented specimens are assessed by cellularity. State the specimen type and local laboratory criteria."
+            },
+            {
+                category: "Low-Grade Neoplasms",
+                question: "What is the primary reason why low-grade papillary urothelial neoplasms are notoriously difficult to diagnose accurately on conventional urine cytology?",
+                options: [
+                    "The constituent cells lack significant nuclear atypia and closely mimic reactive urothelium",
+                    "Specimens are invariably hypocellular due to tumor necrosis",
+                    "Low-grade cells uniformly undergo rapid autolysis within 10 minutes",
+                    "Papillary fronds are never shed into spontaneous voided urine"
+                ],
+                correct: 0,
+                imageCaption: "Low-Grade Papillary Cluster Challenge",
+                imageUrl: "https://www.pathologyoutlines.com/imgau/bladderLGpapghorab01.jpg",
+                educationalNote: "Low-grade papillary urothelial neoplasms often shed cells with mild atypia, so urine cytology has limited sensitivity. A convincing fibrovascular core in a papillary group supports a low-grade urothelial neoplasm; absence of atypia does not exclude a lesion."
+            },
+            {
+                category: "Benign Mimics & Lithiasis",
+                question: "Which of the following cytologic features helps differentiate reactive urothelial changes secondary to nephrolithiasis from high-grade urothelial carcinoma?",
+                options: [
+                    "Maintenance of a low nuclear-to-cytoplasmic ratio with prominent cytoplasmic vacuolization",
+                    "Extreme nuclear hyperchromasia coupled with irregular nuclear membranes",
+                    "An elevated N/C ratio exceeding 0.7 in single cells",
+                    "Complete loss of cellular cohesion and necrosis"
+                ],
+                correct: 0,
+                imageCaption: "Reactive Urothelium in Lithiasis",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.3%20a.jpg",
+                educationalNote: "Reactive changes associated with stones/inflammation can cause enlargement and nucleoli, but usually retain more cytoplasm and smoother nuclear contours than HGUC. Degenerated cells should not be used to assess TPS criteria."
+            },
+            {
+                category: "Inflammatory & Granulomatous Lesions",
+                question: "In the evaluation of urinary cytology, which cytologic finding is characteristic of Malakoplakia of the urinary tract?",
+                options: [
+                    "Neutrophilic microabscesses with fungal hyphae",
+                    "Histiocytes containing granular eosinophilic cytoplasm and targetoid Michaelis-Gutmann bodies",
+                    "Multinucleated giant cells with foamy cytoplasm and asteroid bodies",
+                    "Malignant spindle cells arranged in storiform bundles"
+                ],
+                correct: 1,
+                imageCaption: "Malakoplakia: Michaelis-Gutmann Bodies",
+                imageUrl: "https://pathologyapps.com/histology/malakoplakia-pap.jpg",
+                educationalNote: "Malakoplakia is associated with histiocytes containing Michaelis–Gutmann bodies, which are mineralised inclusions often highlighted by PAS and von Kossa stains. Cytology may not show all classic features; tissue correlation can be necessary."
+            },
+            {
+                category: "Secondary Malignancies",
+                question: "Which metastatic malignancy to the urinary bladder most frequently mimics primary high-grade urothelial carcinoma in urinary cytology specimens?",
+                options: [
+                    "Metastatic melanoma from cutaneous primary sites",
+                    "Prostatic adenocarcinoma extending directly into or involving the bladder neck",
+                    "Metastatic clear cell renal cell carcinoma",
+                    "Small cell lung carcinoma with neuroendocrine features"
+                ],
+                correct: 1,
+                imageCaption: "Prostatic Adenocarcinoma Extension",
+                imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9922/11609891/bd91bf0c5620/PROS-85-97-g001.jpg",
+                educationalNote: "Prostatic adenocarcinoma involving the bladder may mimic a bladder primary. Use clinical history and a targeted immunopanel (for example, prostate-lineage markers versus urothelial markers); morphology alone may not reliably establish the primary site."
+            },
+            {
+                category: "Degenerative Artifacts",
+                question: "When a urine specimen is left at room temperature for an extended period prior to processing, what is the primary cytopathologic artifact that develops?",
+                options: [
+                    "Cellular degeneration characterized by nuclear pyknosis, karyorrhexis, and cytoplasmic vacuolization",
+                    "Spontaneous fixation mimicking formalin preservation",
+                    "Marked cellular enlargement with prominent macronucleoli",
+                    "Crisp preservation of chromatin detail and nuclear membrane contours"
+                ],
+                correct: 0,
+                imageCaption: "Room Temperature Degenerative Artifact",
+                imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/6dad/3191613/fd73d5896d1b/OMJ-D-10-00129-fc.jpg",
+                educationalNote: "Urine left unpreserved at room temperature can develop degeneration, including cytoplasmic vacuolation, nuclear changes and loss of crisp detail. Process promptly or use validated preservative/transport procedures; avoid overcalling degenerated cells."
+            },
+            {
+                category: "Urothelial Carcinoma Variants",
+                question: "Which cytomorphologic feature is most characteristic of plasmacytoid urothelial carcinoma when identified in urine cytology?",
+                options: [
+                    "Discohesive cells with eccentric nuclei, abundant basophilic cytoplasm, and lack of intercellular cohesion",
+                    "Large syncytial sheets with prominent squamous pearls",
+                    "Small monotonous cells arranged in delicate cord-like structures",
+                    "Columnar mucin-secreting cells with basal nuclei"
+                ],
+                correct: 0,
+                imageCaption: "Plasmacytoid Variant Urothelial Carcinoma",
+                imageUrl: "https://ars.els-cdn.com/content/image/1-s2.0-S2213294520300946-gr1.jpg",
+                educationalNote: "Plasmacytoid urothelial carcinoma may show discohesive cells with eccentric nuclei and abundant eosinophilic or basophilic cytoplasm, sometimes mimicking plasma cells. The variant may be subtle in urine; immunocytochemistry and clinical correlation may help."
+            },
+            {
+                category: "Ancillary Testing & Cell Blocks",
+                question: "What is the primary diagnostic utility of ancillary immunohistochemistry (such as CD138 or uroplakin-II) when applied to cell block preparations of urinary sediment?",
+                options: [
+                    "To evaluate hormonal receptor status for targeted therapy",
+                    "To support lineage assignment in a targeted differential diagnosis (for example, uroplakin II for urothelial differentiation)",
+                    "To determine the exact histologic grade of low-grade papillary lesions",
+                    "To measure mitotic index and Ki-67 proliferation fraction"
+                ],
+                correct: 1,
+                imageCaption: "Cell Block Immunohistochemistry",
+                imageUrl: "https://www.pathologyoutlines.com/imgau/kidneytumormalignanturothelialcarcinomasubtypesplasmaTretiakova13.jpg",
+                educationalNote: "Ancillary stains should answer a defined differential. Uroplakin II supports urothelial differentiation; CD138 is not a stand-alone marker of urothelial origin and can label plasma cells and other neoplasms. Select a panel based on morphology and clinical history."
+            },
+            {
+                category: "Therapeutic Radiation Effect",
+                question: "Which of the following cytologic findings is most strongly associated with radiation therapy effect in benign urothelial cells?",
+                options: [
+                    "Cellular and nuclear gigantism with preserved nuclear-to-cytoplasmic ratio and multinucleation",
+                    "High N/C ratio exceeding 0.7 with hyperchromatic coarse chromatin",
+                    "Abundant mitotic figures with atypical tripolar spindles",
+                    "Prominent single cell apoptosis and apoptotic bodies"
+                ],
+                correct: 0,
+                imageCaption: "Radiation-Induced Cytomegaly & Gigantism",
+                imageUrl: "https://www.pathologyoutlines.com/thumb/bladderradiationcystitisCyto01.png",
+                educationalNote: "Radiation/therapy effect can cause striking cytomegaly, multinucleation and degenerative atypia. Correlate with treatment history and look for the full malignant cytomorphologic pattern before classifying as HGUC."
+            },
+            {
+                category: "Diagnostic Categories (TPS)",
+                question: "In urinary cytology, what does the diagnostic category 'Atypical Urothelial Cells (AUC)' signify within The Paris System framework?",
+                options: [
+                    "Cells showing nuclear atypia that exceeds reactive changes but falls short of definitive high-grade urothelial carcinoma",
+                    "Specimens with complete absence of urothelial cells",
+                    "Definitive evidence of low-grade papillary urothelial neoplasm",
+                    "Severe inflammation obscuring greater than 50% of the smear"
+                ],
+                correct: 0,
+                imageCaption: "Atypical Urothelial Cells (AUC) Category",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%204.3.jpg",
+                educationalNote: "AUC is for urothelial cells with atypia beyond confidently reactive change but insufficient criteria for SHGUC/HGUC. Under TPS 2.0, increased N:C ratio (often ≥0.5) plus at least one additional feature is considered; exclude degeneration and use the category judiciously."
+            },
+            {
+                category: "Differential Diagnosis & Mimics",
+                question: "Which cytologic finding favors cytomegalovirus (CMV) infection over malakoplakia?",
+                options: [
+                    "Presence of periodic acid-Schiff (PAS) and von Kossa positive targetoid mineralized inclusions within histiocytes",
+                    "Intranuclear basophilic viral inclusions surrounded by a halo",
+                    "Intracytoplasmic mucin vacuoles pushing the nucleus to the periphery",
+                    "Prominent keratinized cytoplasm with intercellular bridges"
+                ],
+                correct: 1,
+                imageCaption: "CMV viral cytopathic change versus malakoplakia",
+                imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/365d/6592115/565f663b3665/JCytol-36-165-g002.jpg",
+                educationalNote: "CMV infection is suggested by characteristic viral cytopathic change, including enlarged cells with intranuclear inclusions and a halo ('owl-eye' appearance). Michaelis–Gutmann bodies favor malakoplakia; they are not the same as CMV inclusions. Confirm in context and with ancillary tests when needed."
+            },
+            {
+                category: "Nested Variant of UC",
+                question: "What is the primary cytopathologic feature of Nested Variant of Urothelial Carcinoma when rarely encountered in urinary cytology?",
+                options: [
+                    "Bland-appearing small nests of urothelial cells with subtle nuclear atypia and infiltrative architecture",
+                    "Large pleomorphic cells with abundant multinucleation",
+                    "Papillary fronds covered by highly atypical hyperchromatic cells",
+                    "Abundant signet-ring cells with displaced eccentric nuclei"
+                ],
+                correct: 0,
+                imageCaption: "Nested Variant Urothelial Carcinoma",
+                imageUrl: "https://acsjournals.onlinelibrary.wiley.com/cms/asset/1983f521-aa7d-4201-8bb1-4265e3b5bf24/mfig002.jpg",
+                educationalNote: "The nested variant can look deceptively bland cytologically and may be difficult to recognize in urine. Cytology cannot reliably demonstrate infiltrative architecture; a suspicious result requires correlation with cystoscopy and tissue biopsy."
+            },
+            {
+                category: "Benign Squamous Elements",
+                question: "Which of the following conditions is most likely to produce abundant benign squamous cells in a routine urine cytology specimen?",
+                options: [
+                    "Urogenital sample contamination from normal skin or vaginal epithelium",
+                    "Squamous cell carcinoma of the renal pelvis",
+                    "Severe nephrotic syndrome with tubular shedding",
+                    "Advanced high-grade urothelial carcinoma with squamous differentiation"
+                ],
+                correct: 0,
+                imageCaption: "Benign Squamous Contamination",
+                imageUrl: "https://oncohemakey.com/wp-content/uploads/2016/12/C14-FF4-1.gif",
+                educationalNote: "Benign squamous cells commonly reflect contamination from skin or vaginal epithelium. Their presence alone is not evidence of squamous malignancy; interpret atypia in the context of specimen quality and clinical findings."
+            },
+            {
+                category: "Severe Reactive vs. Malignant",
+                question: "What cytopathologic feature distinguishes high-grade urothelial carcinoma from severe reactive atypia?",
+                options: [
+                    "Irregular nuclear membrane contour irregularities combined with a high N/C ratio exceeding 0.7",
+                    "Presence of abundant neutrophils and necrotic debris",
+                    "Moderate cytoplasmic vacuolization and multinucleation",
+                    "Uniform nuclear enlargement with smooth, regular nuclear contours"
+                ],
+                correct: 0,
+                imageCaption: "HGUC: N:C ratio >0.7 with nuclear abnormalities",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%206.3.jpg",
+                educationalNote: "An N:C ratio >0.7 is a key TPS benchmark for HGUC, along with hyperchromasia, coarse chromatin and irregular nuclear contours. Some HGUC cells may fall below this threshold; assess the population and all criteria, not a single cell or ratio alone."
+            },
+            {
+                category: "Urinary Diversion Specimens",
+                question: "When evaluating urinary cytology specimens from patients with ileal conduits, which finding is frequently observed and must not be misinterpreted as malignancy?",
+                options: [
+                    "Degenerated intestinal goblet cells and stripped absorptive columnar epithelium",
+                    "Malignant signet-ring cells forming cohesive glandular clusters",
+                    "Marked dysplastic squamous epithelium with keratin pearls",
+                    "Urothelial carcinoma in situ cells shedding singly"
+                ],
+                correct: 0,
+                imageCaption: "Ileal Conduit Goblet & Columnar Cells",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.15%20a.jpg",
+                educationalNote: "Ileal conduit urine may contain intestinal epithelial cells, goblet cells, mucus, inflammation and degenerative debris. Recognise the diversion history and avoid interpreting intestinal elements as urothelial malignancy without supporting atypia."
+            },
+            {
+                category: "Microcystic Variant of UC",
+                question: "Which of the following cytologic features is characteristic of Microcystic Variant of Urothelial Carcinoma?",
+                options: [
+                    "Presence of tumor cells surrounding small gland-like lumina containing dense mucinous or proteinaceous secretions",
+                    "Large pleomorphic cells with prominent intranuclear cytoplasmic inclusions",
+                    "Sheets of bland spindle cells with storiform architecture",
+                    "Abundant naked nuclei in a background of lymphoglandular bodies"
+                ],
+                correct: 0,
+                imageCaption: "Microcystic Luminal Secretions",
+                imageUrl: "https://www.pathologyoutlines.com/imgau/bladdercytologyneoplasticchoy02.jpg",
+                educationalNote: "Microcystic urothelial carcinoma may show cells surrounding small lumina containing mucinous/proteinaceous material, but this pattern is not specific on cytology. Correlate with tissue morphology and exclude glandular lesions or metastatic adenocarcinoma."
+            },
+            {
+                category: "Suspicious Category (TPS)",
+                question: "According to The Paris System, how should a urinary cytology specimen be categorized when it contains rare atypical cells with features that are highly suggestive of, but not entirely diagnostic for, High-Grade Urothelial Carcinoma?",
+                options: [
+                    "Suspicious for High-Grade Urothelial Carcinoma (SHGUC)",
+                    "Atypical Urothelial Cells (AUC)",
+                    "Low-Grade Urothelial Neoplasm (LGUN)",
+                    "Negative for High-Grade Urothelial Carcinoma (NHGUC)"
+                ],
+                correct: 0,
+                imageCaption: "Suspicious for HGUC (SHGUC) Category",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%205.6.jpg",
+                educationalNote: "SHGUC is appropriate when a few cells have features strongly suggestive of HGUC but do not meet the threshold for a definitive HGUC diagnosis. Review specimen quality, clinical risk and follow-up; avoid using SHGUC as a synonym for any atypia."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedAnswer = null;
+        let timer = null;
+        let timeLeft = 30;
+        let participantName = "";
+        let answersState = new Array(quizData.length).fill(null);
+
+        function startQuiz() {
+            const nameInput = document.getElementById('participant-name');
+            const errorEl = document.getElementById('name-error');
+
+            if (!nameInput.value.trim()) {
+                errorEl.classList.remove('hidden');
+                nameInput.focus();
+                return;
+            }
+            errorEl.classList.add('hidden');
+            participantName = nameInput.value.trim();
+
+            document.getElementById('screen-welcome').classList.add('hidden');
+            document.getElementById('screen-results').classList.add('hidden');
+            document.getElementById('screen-quiz').classList.remove('hidden');
+
+            currentQuestionIndex = 0;
+            score = 0;
+            answersState.fill(null);
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            clearInterval(timer);
+            timeLeft = 30;
+            updateTimerDisplay();
+            startTimer();
+
+            const q = quizData[currentQuestionIndex];
+            document.getElementById('question-counter').innerText = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            document.getElementById('category-badge').innerText = `Category: ${q.category}`;
+            document.getElementById('question-text').innerText = q.question;
+            document.getElementById('image-caption').innerText = q.imageCaption;
+            const questionImage = document.getElementById('question-image');
+            const imageLink = document.getElementById('question-image-link');
+            const sourceLink = document.getElementById('image-source-link');
+            document.getElementById('image-error').classList.add('hidden');
+            questionImage.onerror = () => document.getElementById('image-error').classList.remove('hidden');
+            questionImage.src = q.imageUrl;
+            questionImage.alt = `Question ${currentQuestionIndex + 1}: ${q.imageCaption}`;
+            imageLink.href = q.imageUrl;
+            sourceLink.href = q.imageUrl;
+
+            // FIX: hide the note instead of removing it from the page
+            document.getElementById('educational-note').classList.add('hidden');
+            document.getElementById('educational-note-text').innerText = '';
+
+            document.getElementById('score-tracker').innerText = `Score: ${score} / ${quizData.length}`;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-4 rounded-xl border border-slate-700 bg-slate-900/80 hover:bg-slate-700/60 transition text-sm sm:text-base text-slate-200 flex items-start space-x-3 group`;
+                btn.innerHTML = `
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full border border-slate-600 flex items-center justify-center text-xs font-semibold text-slate-400 group-hover:border-amber-500 group-hover:text-amber-400">${String.fromCharCode(65 + idx)}</span>
+                    <span class="flex-grow">${opt}</span>
+                `;
+                btn.onclick = () => selectOption(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = true;
+            nextBtn.innerText = (currentQuestionIndex === quizData.length - 1) ? 'Finish Quiz' : 'Next Question';
+            selectedAnswer = null;
+        }
+
+        function startTimer() {
+            const timerBar = document.getElementById('timer-bar');
+            timerBar.style.width = '100%';
+            timerBar.className = 'bg-amber-500 h-full transition-all duration-1000 linear';
+
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                const percentage = (timeLeft / 30) * 100;
+                timerBar.style.width = `${percentage}%`;
+
+                if (timeLeft <= 10) {
+                    timerBar.className = 'bg-rose-500 h-full transition-all duration-1000 linear';
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    handleTimeOut();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const display = document.getElementById('timer-display');
+            display.innerText = `${timeLeft}s`;
+            if (timeLeft <= 10) {
+                display.className = 'font-mono text-lg font-bold text-rose-400 bg-slate-900 px-3 py-1 rounded-lg border border-rose-500/50 w-16 text-center animate-pulse';
+            } else {
+                display.className = 'font-mono text-lg font-bold text-amber-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-700 w-16 text-center';
+            }
+        }
+
+        function showNote(q) {
+            document.getElementById('educational-note-text').innerText = q.educationalNote;
+            document.getElementById('educational-note').classList.remove('hidden');
+        }
+
+        function selectOption(selectedIndex, btnElement) {
+            clearInterval(timer);
+            const q = quizData[currentQuestionIndex];
+            selectedAnswer = selectedIndex;
+            answersState[currentQuestionIndex] = selectedIndex;
+
+            const options = document.getElementById('options-container').children;
+            for (let i = 0; i < options.length; i++) {
+                options[i].disabled = true;
+                options[i].classList.remove('hover:bg-slate-700/60');
+                if (i === q.correct) {
+                    options[i].classList.add('border-emerald-500/80', 'bg-emerald-950/40', 'text-emerald-200');
+                } else if (i === selectedIndex) {
+                    options[i].classList.add('border-rose-500/80', 'bg-rose-950/40', 'text-rose-200');
+                } else {
+                    options[i].classList.add('opacity-50');
+                }
+            }
+
+            if (selectedIndex === q.correct) {
+                score++;
+            }
+            document.getElementById('score-tracker').innerText = `Score: ${score} / ${quizData.length}`;
+            showNote(q);
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        function handleTimeOut() {
+            const q = quizData[currentQuestionIndex];
+            answersState[currentQuestionIndex] = -1; // timed out
+            const options = document.getElementById('options-container').children;
+            for (let i = 0; i < options.length; i++) {
+                options[i].disabled = true;
+                options[i].classList.remove('hover:bg-slate-700/60');
+                if (i === q.correct) {
+                    options[i].classList.add('border-emerald-500/80', 'bg-emerald-950/40', 'text-emerald-200');
+                } else {
+                    options[i].classList.add('opacity-50');
+                }
+            }
+            showNote(q);
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            clearInterval(timer);
+            document.getElementById('screen-quiz').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+
+            document.getElementById('final-score-display').innerText = `${score} / ${quizData.length}`;
+            const percentage = Math.round((score / quizData.length) * 100);
+            document.getElementById('final-percentage').innerText = `${percentage}% Accuracy`;
+
+            // Populate certificate fields
+            document.getElementById('cert-participant-name').innerText = participantName;
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('cert-date').innerText = `Date: ${new Date().toLocaleDateString(undefined, options)}`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function restartQuiz() {
+            document.getElementById('screen-results').classList.add('hidden');
+            document.getElementById('screen-welcome').classList.remove('hidden');
+            document.getElementById('participant-name').value = '';
+        }
+
+        function openCertificateModal() {
+            document.getElementById('certificate-modal').classList.remove('hidden');
+        }
+
+        function closeCertificateModal() {
+            document.getElementById('certificate-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
