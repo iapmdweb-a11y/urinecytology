@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 h-full flex flex-col justify-between antialiased selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-amber-500 selection:text-slate-950">
 
     <!-- Header / Navbar -->
     <header class="bg-slate-950 border-b border-slate-800 py-4 px-6 shadow-md">
@@ -60,7 +60,7 @@
     </header>
 
     <!-- Main App Container -->
-    <main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full">
+    <main class="flex-grow flex items-start sm:items-center justify-center p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto w-full">
 
         <!-- SCREEN 1: Introduction & Registration -->
         <div id="screen-welcome" class="w-full bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-6 sm:p-10 shadow-2xl transition-all duration-300">
@@ -151,8 +151,8 @@
                 <p id="educational-note-text" class="text-sm leading-relaxed text-slate-200"></p>
             </div>
 
-            <!-- Quiz Footer Action -->
-            <div class="flex justify-between items-center pt-4 border-t border-slate-700">
+            <!-- Quiz Footer Action (sticky so Next is always reachable) -->
+            <div class="flex justify-between items-center pt-4 border-t border-slate-700 sticky bottom-0 bg-slate-800 py-3">
                 <span id="score-tracker" class="text-xs text-slate-400">Score: 0 / 20</span>
                 <button id="next-btn" onclick="nextQuestion()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-2.5 rounded-xl shadow transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                     Next Question
@@ -266,8 +266,7 @@
                     "Small uniform cell clusters without nuclear membrane irregularities"
                 ],
                 correct: 0,
-                imageCaption: "HGUC: high N:C ratio and malignant nuclear features"
-            ,
+                imageCaption: "HGUC: high N:C ratio and malignant nuclear features",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%206.5.jpg",
                 educationalNote: "TPS uses an N:C ratio >0.7 as the major benchmark for HGUC, together with moderate–severe hyperchromasia, coarse/clumped chromatin and irregular nuclear membranes. Interpret a constellation of findings in well-preserved cells; do not diagnose from N:C ratio alone."
             },
@@ -281,9 +280,8 @@
                     "Squamous metaplasia sheets with abundant keratinization"
                 ],
                 correct: 1,
-                imageCaption: "Denuded Urothelial Cluster & Crush Artifact"
-            ,
-                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.1%20b.jpg",
+                imageCaption: "Denuded Urothelial Cluster & Crush Artifact",
+                imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.8%20b.jpg",
                 educationalNote: "Instrumentation can produce cohesive or three-dimensional benign urothelial groups, sometimes with degeneration or crush artifact. Correlate with recent cystoscopy/catheterisation and assess nuclear detail; architecture alone does not establish papillary neoplasia."
             },
             {
@@ -296,8 +294,7 @@
                     "Complete pyknosis with nuclear fragmentation (karyorrhexis)"
                 ],
                 correct: 1,
-                imageCaption: "BK Polyomavirus Decoy Cell"
-            ,
+                imageCaption: "BK Polyomavirus Decoy Cell",
                 imageUrl: "https://www.pathologyoutlines.com/imgau/kidneybkvirussaglam09.jpg",
                 educationalNote: "BK polyomavirus decoy cells may show enlarged nuclei with smooth, glassy viral inclusions and peripheral chromatin. They can mimic malignancy; clinical context, morphology and, where needed, ancillary testing help. Polyomavirus changes are generally reported as negative for HGUC under TPS when characteristic."
             },
@@ -305,14 +302,13 @@
                 category: "Specimen Adequacy",
                 question: "According to The Paris System, which statement best describes adequacy assessment for a non-instrumented voided urine specimen?",
                 options: [
-                     "A universal minimum of 500 urothelial cells is required",
+                    "A universal minimum of 500 urothelial cells is required",
                     "A universal minimum of 1,000 urothelial cells is required",
                     "Adequate volume (commonly >30 mL) and appropriate handling are important; there is no universal 2,000-cell threshold for voided urine",
                     "A universal minimum of 5,000 urothelial cells is required"
                 ],
                 correct: 2,
-                imageCaption: "Urothelial Cell Cellularity Assessment"
-            ,
+                imageCaption: "Urothelial Cell Cellularity Assessment",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.1%20a.jpg",
                 educationalNote: "For voided urine, adequacy is not defined by a universal minimum of 2,000 urothelial cells. TPS guidance emphasizes sufficient volume (commonly >30 mL) and appropriate handling; instrumented specimens are assessed by cellularity. State the specimen type and local laboratory criteria."
             },
@@ -326,8 +322,7 @@
                     "Papillary fronds are never shed into spontaneous voided urine"
                 ],
                 correct: 0,
-                imageCaption: "Low-Grade Papillary Cluster Challenge"
-            ,
+                imageCaption: "Low-Grade Papillary Cluster Challenge",
                 imageUrl: "https://www.pathologyoutlines.com/imgau/bladderLGpapghorab01.jpg",
                 educationalNote: "Low-grade papillary urothelial neoplasms often shed cells with mild atypia, so urine cytology has limited sensitivity. A convincing fibrovascular core in a papillary group supports a low-grade urothelial neoplasm; absence of atypia does not exclude a lesion."
             },
@@ -341,8 +336,7 @@
                     "Complete loss of cellular cohesion and necrosis"
                 ],
                 correct: 0,
-                imageCaption: "Reactive Urothelium in Lithiasis"
-            ,
+                imageCaption: "Reactive Urothelium in Lithiasis",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.3%20a.jpg",
                 educationalNote: "Reactive changes associated with stones/inflammation can cause enlargement and nucleoli, but usually retain more cytoplasm and smoother nuclear contours than HGUC. Degenerated cells should not be used to assess TPS criteria."
             },
@@ -356,9 +350,8 @@
                     "Malignant spindle cells arranged in storiform bundles"
                 ],
                 correct: 1,
-                imageCaption: "Malakoplakia: Michaelis-Gutmann Bodies"
-            ,
-                imageUrl: "https://pathologyapps.com/histology/malakoplakia-pap.jpg",
+                imageCaption: "Malakoplakia: Michaelis-Gutmann Bodies",
+                imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/365d/6592115/565f663b3665/JCytol-36-165-g002.jpg",
                 educationalNote: "Malakoplakia is associated with histiocytes containing Michaelis–Gutmann bodies, which are mineralised inclusions often highlighted by PAS and von Kossa stains. Cytology may not show all classic features; tissue correlation can be necessary."
             },
             {
@@ -371,8 +364,7 @@
                     "Small cell lung carcinoma with neuroendocrine features"
                 ],
                 correct: 1,
-                imageCaption: "Prostatic Adenocarcinoma Extension"
-            ,
+                imageCaption: "Prostatic Adenocarcinoma Extension",
                 imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9922/11609891/bd91bf0c5620/PROS-85-97-g001.jpg",
                 educationalNote: "Prostatic adenocarcinoma involving the bladder may mimic a bladder primary. Use clinical history and a targeted immunopanel (for example, prostate-lineage markers versus urothelial markers); morphology alone may not reliably establish the primary site."
             },
@@ -386,8 +378,7 @@
                     "Crisp preservation of chromatin detail and nuclear membrane contours"
                 ],
                 correct: 0,
-                imageCaption: "Room Temperature Degenerative Artifact"
-            ,
+                imageCaption: "Room Temperature Degenerative Artifact",
                 imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/6dad/3191613/fd73d5896d1b/OMJ-D-10-00129-fc.jpg",
                 educationalNote: "Urine left unpreserved at room temperature can develop degeneration, including cytoplasmic vacuolation, nuclear changes and loss of crisp detail. Process promptly or use validated preservative/transport procedures; avoid overcalling degenerated cells."
             },
@@ -401,8 +392,7 @@
                     "Columnar mucin-secreting cells with basal nuclei"
                 ],
                 correct: 0,
-                imageCaption: "Plasmacytoid Variant Urothelial Carcinoma"
-            ,
+                imageCaption: "Plasmacytoid Variant Urothelial Carcinoma",
                 imageUrl: "https://ars.els-cdn.com/content/image/1-s2.0-S2213294520300946-gr1.jpg",
                 educationalNote: "Plasmacytoid urothelial carcinoma may show discohesive cells with eccentric nuclei and abundant eosinophilic or basophilic cytoplasm, sometimes mimicking plasma cells. The variant may be subtle in urine; immunocytochemistry and clinical correlation may help."
             },
@@ -416,8 +406,7 @@
                     "To measure mitotic index and Ki-67 proliferation fraction"
                 ],
                 correct: 1,
-                imageCaption: "Cell Block Immunohistochemistry"
-            ,
+                imageCaption: "Cell Block Immunohistochemistry",
                 imageUrl: "https://www.pathologyoutlines.com/imgau/kidneytumormalignanturothelialcarcinomasubtypesplasmaTretiakova13.jpg",
                 educationalNote: "Ancillary stains should answer a defined differential. Uroplakin II supports urothelial differentiation; CD138 is not a stand-alone marker of urothelial origin and can label plasma cells and other neoplasms. Select a panel based on morphology and clinical history."
             },
@@ -431,8 +420,7 @@
                     "Prominent single cell apoptosis and apoptotic bodies"
                 ],
                 correct: 0,
-                imageCaption: "Radiation-Induced Cytomegaly & Gigantism"
-            ,
+                imageCaption: "Radiation-Induced Cytomegaly & Gigantism",
                 imageUrl: "https://www.pathologyoutlines.com/thumb/bladderradiationcystitisCyto01.png",
                 educationalNote: "Radiation/therapy effect can cause striking cytomegaly, multinucleation and degenerative atypia. Correlate with treatment history and look for the full malignant cytomorphologic pattern before classifying as HGUC."
             },
@@ -446,8 +434,7 @@
                     "Severe inflammation obscuring greater than 50% of the smear"
                 ],
                 correct: 0,
-                imageCaption: "Atypical Urothelial Cells (AUC) Category"
-            ,
+                imageCaption: "Atypical Urothelial Cells (AUC) Category",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%204.3.jpg",
                 educationalNote: "AUC is for urothelial cells with atypia beyond confidently reactive change but insufficient criteria for SHGUC/HGUC. Under TPS 2.0, increased N:C ratio (often ≥0.5) plus at least one additional feature is considered; exclude degeneration and use the category judiciously."
             },
@@ -461,9 +448,8 @@
                     "Prominent keratinized cytoplasm with intercellular bridges"
                 ],
                 correct: 1,
-                imageCaption: "CMV viral cytopathic change versus malakoplakia"
-            ,
-                imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/365d/6592115/565f663b3665/JCytol-36-165-g002.jpg",
+                imageCaption: "CMV viral cytopathic change versus malakoplakia",
+                imageUrl: "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/f738/7455112/2ccb9e5caa9b/u029-0345-9780323547635.jpg",
                 educationalNote: "CMV infection is suggested by characteristic viral cytopathic change, including enlarged cells with intranuclear inclusions and a halo ('owl-eye' appearance). Michaelis–Gutmann bodies favor malakoplakia; they are not the same as CMV inclusions. Confirm in context and with ancillary tests when needed."
             },
             {
@@ -476,8 +462,7 @@
                     "Abundant signet-ring cells with displaced eccentric nuclei"
                 ],
                 correct: 0,
-                imageCaption: "Nested Variant Urothelial Carcinoma"
-            ,
+                imageCaption: "Nested Variant Urothelial Carcinoma",
                 imageUrl: "https://acsjournals.onlinelibrary.wiley.com/cms/asset/1983f521-aa7d-4201-8bb1-4265e3b5bf24/mfig002.jpg",
                 educationalNote: "The nested variant can look deceptively bland cytologically and may be difficult to recognize in urine. Cytology cannot reliably demonstrate infiltrative architecture; a suspicious result requires correlation with cystoscopy and tissue biopsy."
             },
@@ -491,8 +476,7 @@
                     "Advanced high-grade urothelial carcinoma with squamous differentiation"
                 ],
                 correct: 0,
-                imageCaption: "Benign Squamous Contamination"
-            ,
+                imageCaption: "Benign Squamous Contamination",
                 imageUrl: "https://oncohemakey.com/wp-content/uploads/2016/12/C14-FF4-1.gif",
                 educationalNote: "Benign squamous cells commonly reflect contamination from skin or vaginal epithelium. Their presence alone is not evidence of squamous malignancy; interpret atypia in the context of specimen quality and clinical findings."
             },
@@ -506,8 +490,7 @@
                     "Uniform nuclear enlargement with smooth, regular nuclear contours"
                 ],
                 correct: 0,
-                imageCaption: "HGUC: N:C ratio >0.7 with nuclear abnormalities"
-            ,
+                imageCaption: "HGUC: N:C ratio >0.7 with nuclear abnormalities",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%206.3.jpg",
                 educationalNote: "An N:C ratio >0.7 is a key TPS benchmark for HGUC, along with hyperchromasia, coarse chromatin and irregular nuclear contours. Some HGUC cells may fall below this threshold; assess the population and all criteria, not a single cell or ratio alone."
             },
@@ -521,8 +504,7 @@
                     "Urothelial carcinoma in situ cells shedding singly"
                 ],
                 correct: 0,
-                imageCaption: "Ileal Conduit Goblet & Columnar Cells"
-            ,
+                imageCaption: "Ileal Conduit Goblet & Columnar Cells",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%203.15%20a.jpg",
                 educationalNote: "Ileal conduit urine may contain intestinal epithelial cells, goblet cells, mucus, inflammation and degenerative debris. Recognise the diversion history and avoid interpreting intestinal elements as urothelial malignancy without supporting atypia."
             },
@@ -536,8 +518,7 @@
                     "Abundant naked nuclei in a background of lymphoglandular bodies"
                 ],
                 correct: 0,
-                imageCaption: "Microcystic Luminal Secretions"
-            ,
+                imageCaption: "Microcystic Luminal Secretions",
                 imageUrl: "https://www.pathologyoutlines.com/imgau/bladdercytologyneoplasticchoy02.jpg",
                 educationalNote: "Microcystic urothelial carcinoma may show cells surrounding small lumina containing mucinous/proteinaceous material, but this pattern is not specific on cytology. Correlate with tissue morphology and exclude glandular lesions or metastatic adenocarcinoma."
             },
@@ -551,8 +532,7 @@
                     "Negative for High-Grade Urothelial Carcinoma (NHGUC)"
                 ],
                 correct: 0,
-                imageCaption: "Suspicious for HGUC (SHGUC) Category"
-            ,
+                imageCaption: "Suspicious for HGUC (SHGUC) Category",
                 imageUrl: "https://paris.soc.wisc.edu/atlasimages/figure%205.6.jpg",
                 educationalNote: "SHGUC is appropriate when a few cells have features strongly suggestive of HGUC but do not meet the threshold for a definitive HGUC diagnosis. Review specimen quality, clinical risk and follow-up; avoid using SHGUC as a synonym for any atypia."
             }
@@ -569,7 +549,7 @@
         function startQuiz() {
             const nameInput = document.getElementById('participant-name');
             const errorEl = document.getElementById('name-error');
-            
+
             if (!nameInput.value.trim()) {
                 errorEl.classList.remove('hidden');
                 nameInput.focus();
@@ -602,14 +582,17 @@
             const questionImage = document.getElementById('question-image');
             const imageLink = document.getElementById('question-image-link');
             const sourceLink = document.getElementById('image-source-link');
+            document.getElementById('image-error').classList.add('hidden');
+            questionImage.onerror = () => document.getElementById('image-error').classList.remove('hidden');
             questionImage.src = q.imageUrl;
             questionImage.alt = `Question ${currentQuestionIndex + 1}: ${q.imageCaption}`;
             imageLink.href = q.imageUrl;
             sourceLink.href = q.imageUrl;
-            document.getElementById('image-error').classList.add('hidden');
-            questionImage.onerror = () => document.getElementById('image-error').classList.remove('hidden');
-            const oldNote = document.getElementById('educational-note');
-            if (oldNote) oldNote.remove();
+
+            // FIX: hide the note instead of removing it from the page
+            document.getElementById('educational-note').classList.add('hidden');
+            document.getElementById('educational-note-text').innerText = '';
+
             document.getElementById('score-tracker').innerText = `Score: ${score} / ${quizData.length}`;
 
             const optionsContainer = document.getElementById('options-container');
@@ -628,6 +611,7 @@
 
             const nextBtn = document.getElementById('next-btn');
             nextBtn.disabled = true;
+            nextBtn.innerText = (currentQuestionIndex === quizData.length - 1) ? 'Finish Quiz' : 'Next Question';
             selectedAnswer = null;
         }
 
@@ -664,6 +648,11 @@
             }
         }
 
+        function showNote(q) {
+            document.getElementById('educational-note-text').innerText = q.educationalNote;
+            document.getElementById('educational-note').classList.remove('hidden');
+        }
+
         function selectOption(selectedIndex, btnElement) {
             clearInterval(timer);
             const q = quizData[currentQuestionIndex];
@@ -687,8 +676,7 @@
                 score++;
             }
             document.getElementById('score-tracker').innerText = `Score: ${score} / ${quizData.length}`;
-            document.getElementById('educational-note-text').innerText = q.educationalNote;
-            document.getElementById('educational-note').classList.remove('hidden');
+            showNote(q);
             document.getElementById('next-btn').disabled = false;
         }
 
@@ -698,14 +686,14 @@
             const options = document.getElementById('options-container').children;
             for (let i = 0; i < options.length; i++) {
                 options[i].disabled = true;
+                options[i].classList.remove('hover:bg-slate-700/60');
                 if (i === q.correct) {
                     options[i].classList.add('border-emerald-500/80', 'bg-emerald-950/40', 'text-emerald-200');
                 } else {
                     options[i].classList.add('opacity-50');
                 }
             }
-            document.getElementById('educational-note-text').innerText = q.educationalNote;
-            document.getElementById('educational-note').classList.remove('hidden');
+            showNote(q);
             document.getElementById('next-btn').disabled = false;
         }
 
@@ -713,12 +701,14 @@
             currentQuestionIndex++;
             if (currentQuestionIndex < quizData.length) {
                 loadQuestion();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 showResults();
             }
         }
 
         function showResults() {
+            clearInterval(timer);
             document.getElementById('screen-quiz').classList.add('hidden');
             document.getElementById('screen-results').classList.remove('hidden');
 
@@ -730,6 +720,7 @@
             document.getElementById('cert-participant-name').innerText = participantName;
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('cert-date').innerText = `Date: ${new Date().toLocaleDateString(undefined, options)}`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function restartQuiz() {
